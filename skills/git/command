@@ -1,12 +1,31 @@
+ssh-keygen -t rsa -C "j2ee_hqh@163"
+
+注册github账号
+将上面生成的id_rsa.pub公钥粘贴到SSH KEY中
+
+
 git config --global user.name "huangqihang"
 git config --global user.email "j2ee_hqh@163.com"
 
 cd f:/work/workspace/learn/MyApp
 
+#初始化当前目录为1个Git仓库
 git init
 
 git add .
 git commit -m 'init'
+
+
+#将本地仓库与远程仓库关联
+git remote add origin git@github.com:huangqihang/MyApp.git
+
+#推送本地文件到仓库（第1次需要-u 参数 -u: 添加文件，并建立本地与远程仓库的关联，这样之后就不需要-u了。）
+git push -u origin master
+
+
+#克隆远程仓库到本地
+git clone git@github.com:huangqihang/MyApp.git
+======================================
 
 git status
 
@@ -42,25 +61,7 @@ git checkout -- readme.txt
 git rm readme.txt
 
 
-==================
-ssh-keygen -t rsa -C "j2ee_hqh@163"
-
-注册github账号
-将上面生成的id_rsa.pub公钥粘贴到SSH KEY中
-
-#将本地仓库与远程仓库关联
-git remote add origin git@github.com:huangqihang/MyApp.git
-
-#推送本地文件到仓库（第1次需要-u 参数 -u: 添加文件，并建立本地与远程仓库的关联，这样之后就不需要-u了。）
-git push -u origin master
-
-
-#克隆远程仓库到本地
-git clone git@github.com:huangqihang/MyApp.git
-
-
-
-======================================
+======================================================================
 
 # 创建分支
 git checkout -b dev 
