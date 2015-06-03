@@ -1,0 +1,17 @@
+2015-06-01 23:07:23:16|0|statement|connection 0|insert into t_user (name, age, sex, photo, address, birthday, reg_date) values (?,?,?,?,?,?,?);|insert into t_user (name, age, sex, photo, address, birthday, reg_date) values ('测试123',100,'0','d:/pic','不知道','2015-06-01','2015-06-01');
+2015-06-01 23:07:23:79|63|rollback|connection 0||
+2015-06-01 23:07:23:126|0|statement|connection 0|update t_user set name = 'ohe2' order by id desc limit 1|
+2015-06-01 23:07:23:158|32|commit|connection 0||
+2015-06-01 23:08:36:257|62|statement|connection 1|select * from t_user where name like ?|select * from t_user where name like '%张%'
+2015-06-01 23:12:20:522|0|statement|connection 0|insert into t_user (name, age, sex, photo, address, birthday, reg_date) values (?,?,?,?,?,?,?);|insert into t_user (name, age, sex, photo, address, birthday, reg_date) values ('测试123',100,'0','d:/pic','不知道','2015-06-01','2015-06-01');
+2015-06-01 23:12:20:569|47|rollback|connection 0||
+2015-06-01 23:12:20:632|0|statement|connection 0|update t_user set name = 'ohe2' order by id desc limit 1|
+2015-06-01 23:12:20:663|31|commit|connection 0||
+2015-06-01 23:12:59:938|0|statement|connection 0|insert into t_user (name, age, sex, photo, address, birthday, reg_date) values (?,?,?,?,?,?,?);|insert into t_user (name, age, sex, photo, address, birthday, reg_date) values ('测试123',100,'0','d:/pic','不知道','2015-06-01','2015-06-01');
+2015-06-01 23:13:00:16|63|rollback|connection 0||
+2015-06-01 23:13:00:63|0|statement|connection 0|update t_user set name = 'ohe2' order by id desc limit 1|
+2015-06-01 23:13:00:95|32|commit|connection 0||
+2015-06-01 23:13:42:310|31|statement|connection 0|update t_user set name=?, age=?, sex=?, photo=?, address=?, birthday=?, reg_date=? where id = ?|update t_user set name='测试2', age=10, sex='1', photo='e:/pic', address='知道', birthday='2015-06-01', reg_date='2015-06-01' where id = 1
+2015-06-01 23:13:42:357|47|commit|connection 0||
+2015-06-01 23:14:08:309|46|statement|connection 0|select * from t_user where id = ?|select * from t_user where id = 1
+2015-06-01 23:15:15:368|47|statement|connection 0|select * from t_user where name like ?|select * from t_user where name like '%张%'

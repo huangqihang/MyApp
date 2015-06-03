@@ -1,0 +1,7 @@
+尽快退出执行流程，并把中断信息传递给调用者，使调用栈中的上层代码可以采取进一步操作
+
+阻塞式方法的调用：
+	捕获到中断异常后，将其抛出: throw new InterruptedException();
+
+Runnable任务/run()中的中断处理：
+	在捕获中断异常后，重新恢复中断状态：Thread.currentThread().interrupt();

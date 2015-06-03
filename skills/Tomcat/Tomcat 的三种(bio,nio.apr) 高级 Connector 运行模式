@@ -1,0 +1,30 @@
+第一种：BIO
+默认的模式,性能非常低下,没有经过任何优化处理和支持. 
+
+
+第二种：NIO
+利用java的异步io护理技术,no blocking IO技术. 
+直接修改server.xml里的Connector节点(80和443端口都要分别配置),修改protocol为 
+protocol="org.apache.coyote.http11.Http11NioProtocol"
+
+
+第三种：APR
+从操作系统级别来解决异步的IO问题,大幅度的提高性能. 
+下载Native 1.1.33 Windows Binaries zip ，
+解压后将tomcat-native-1.1.33-win32-bin\bin\x64\tcnative-1.dll拷贝到Tomcat\bin目录下，直接启动就支持apr。
+
+
+===================================================================================================
+Tomcat Connector(Tomcat连接器)有bio、nio、apr三种运行模式，
+Tomcat的原生库基于Apache可移植运行时（Apache Portable Runtime简称APR），给程序员提供了超强的扩展性和性能，
+在产品运作中帮助融合原生的服务器技术以展现最佳的性能。
+
+Tomcat在默认情况下，就是以bio模式运行的。
+就一般而言，bio模式是三种运行模式中性能最低的一种，Java nio是一个基于缓冲区、并能提供非阻塞I/O操作的Java API，
+它拥有比传统I/O操作(bio)更好的并发运行性能。
+让tomcat支持NIO模式只需在server.xml文件里面修改Connector节点的protocol属性，
+将HTTP/1.1改为org.apache.coyote.http11.Http11NioProtocol即可。
+
+apr(Apache Portable Runtime/Apache可移植运行时)，是Apache HTTP服务器的支持库。
+你可以简单地理解为，Tomcat将以JNI的形式调用Apache HTTP服务器的核心动态链接库来处理文件读取或网络传输操作，
+从而大大地提高Tomcat对静态文件的处理性能。 

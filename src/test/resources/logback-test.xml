@@ -1,0 +1,94 @@
+<configuration debug="false" scan="true" scanPeriod="5 seconds">
+	
+	<!-- 从JNDI获取配置参数 -->
+	<insertFromJNDI env-entry-name="java:comp/env/appName" as="appName" />
+	
+	<!-- 指定本项目日志记录器的上下文名称 -->
+	<contextName>myAppName</contextName>
+	
+	<!-- 自定义变量 -->
+	<property scope="context" name="nodeId" value="firstNode" />
+	<variable name="USER_HOME" value="logs"></variable>
+	
+	<!-- 从外部文件引入变量 -->
+	 <property file="src/test/resources/logback-variables.properties" />
+	 
+	 <!-- 从class path 引用资源文件 -->
+	 <property resource="resource1.properties" />
+	 
+	 
+	 
+	 
+	 
+	 <!-- Appender 日志追加器 -->
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder 
+			by default -->
+			<withJansi>false</withJansi> <!-- Not support on windows -->
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} -%msg%n</pattern>
+		</encoder>
+	</appender>
+
+
+	<!-- 文件logger 将日志记录到文件。 此外，还自动继承root中配置的STDOUT日志记录器，因此还会在控制台输出日志 -->
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<file>${destination}</file> <!-- :-golden 如果USER_HOME未定义，则使用默认值golden -->
+		<append>true</append>
+		<prudent>false</prudent>
+		<encoder>
+			<pattern>${filePattern}
+			</pattern>
+		</encoder>
+	</appender>
+
+
+
+ 	<appender name="ROLLING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	    <file>${USER_HOME}/rolling.log</file>
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	       <!-- rollover daily -->
+	      <fileNamePattern>mylog-%d{yyyy-MM-dd}.%i.txt</fileNamePattern>
+	      <timeBasedFileNamingAndTriggeringPolicy
+	            class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+	        <!-- or whenever the file size reaches 100MB -->
+	        <maxFileSize>100MB</maxFileSize>
+	      </timeBasedFileNamingAndTriggeringPolicy>
+	
+	      <!-- keep 30 days' worth of history -->
+	      <maxHistory>30</maxHistory>
+	    </rollingPolicy>
+	
+	    <encoder>
+	      <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+	    </encoder>
+  	</appender> 
+
+
+
+	<!-- 
+		logger的name属性：
+		即包名，此包名将决定本logger所能影响到的范围。
+		如，下面的配置将使得只有logback包及其子包下的日志才会被写入到文件中。
+		
+		logger的additivity属性：
+		false: 不叠加上层的appender,即不会附加root中的appender
+		true: default，可叠加上层的appender
+	-->
+	<logger name="logback" level="INFO" additivity="true">
+		<appender-ref ref="FILE" />
+	</logger>
+
+	<!-- 为我的模块专门用1个日志文件来记录 -->
+
+
+
+
+	<!-- root 根记录器
+		内部添加的appender将自动被所有的子logger继承 -->
+	<root level="debug">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="ROLLING_FILE" />
+	</root>
+</configuration>

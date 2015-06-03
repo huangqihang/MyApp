@@ -1,0 +1,16 @@
+#file
+*.class
+.classpath
+.project
+
+
+#folder
+target
+.settings
+
+
+# My configurations:
+
+# Python:
+
+# Windows:

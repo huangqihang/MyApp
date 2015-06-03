@@ -1,0 +1,12 @@
+Java综合性网站
+	http://howtodoinjava.com/ 【非常好的资源】
+	http://blog.jobbole.com/category/books/ 【入门书籍】	
+	http://ifeve.com/ 【非常好的资源哦】
+	
+Spring
+	http://www.importnew.com/15851.html 【spring之25问】
+
+	
+Git
+	http://blog.jobbole.com/78999/ 【两分钟指南】
+	

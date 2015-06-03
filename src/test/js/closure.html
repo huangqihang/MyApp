@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+		/**外界通过闭包访问函数内部的局部变量*/
+	　	function f1(){
+	　　　　var n=999;
+	　　　　nAdd=function(){n+=1}
+			
+			/**闭包：内部函数操作外部函数中定义的变量*/
+	　　　　function f2(){
+	　　　　　　alert(n);
+	　　　　}
+	　　　　return f2; //将闭包返回给外界
+	　　}
+	　　var result=f1();
+	　　nAdd();
+	　　result(); // 999
+	　　nAdd();
+	　　result(); // 1000
+	
+	
+		// 闭包中的this -在真正运行时绑定到了window对象上 
+		var name = "The Window";
+	　　var object = {
+	　　　　name : "My Object",
+	　　　　getNameFunc : function(){
+	　　　　　　return function(){
+	　　　　　　　　return this.name; // 在外部调用时，this指向的是window对象
+	　　　　　　};
+	　　　　}
+	　　};
+	　　alert(object.getNameFunc()());
+	
+	
+		// 闭包中的this -在真正运行时绑定到所定义的对象上 
+		var name = "The Window2";
+	　　var object = {
+	　　　　name : "My Object2",
+	　　　　getNameFunc : function(){
+	　　　　　　var that = this; // 保存object对象的引用到that
+	　　　　　　return function(){
+	　　　　　　　　return that.name;
+	　　　　　　};
+	　　　　}
+	　　};
+	　　alert(object.getNameFunc()());
+		
+	</script>
+</body>
+</html>

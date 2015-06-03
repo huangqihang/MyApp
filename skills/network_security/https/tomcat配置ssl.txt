@@ -1,0 +1,51 @@
+==============================================================
+Tomcat配置文件server.xml中打开8443端口的配置
+
+Tomcat配置SSL有2种方式：
+	JSSE : JAVA运行环境提供
+	APR ： 默认使用OPENSSL引擎（当安装了tomcat native library时，将默认采用此种方式）
+	
+可通过protocol的类名来明确指定使用哪种方式来实现SSL。
+
+JSSE配置-protocol="org.apache.coyote.http11.Http11Protocol"
+
+
+HTTP 默认端口80
+<Connector URIEncoding="UTF-8" connectionTimeout="20000" port="80" protocol="HTTP/1.1" redirectPort="443"/>
+	
+	
+HTTPS 默认端口443
+<Connector port="443" protocol="org.apache.coyote.http11.Http11Protocol"
+       maxThreads="150" minThreads="10"
+	   SSLEnabled="true" scheme="https" secure="true" sslProtocol="TLS"
+       clientAuth="false"  
+	   keystoreFile="f:/tmp/jks/tomcat.keystore" keystorePass="111111"
+	   truststoreFile="f:/tmp/jks/tomcat.keystore" truststorePass="111111"
+	   />
+	
+==============================================================
+
+web.xml中增加：
+<!--HTTP自动跳转到HTTPS -->
+	<security-constraint> 
+       <web-resource-collection > 
+              <web-resource-name >SSL</web-resource-name> 
+              <url-pattern>/*</url-pattern> 
+       </web-resource-collection>
+                             
+       <user-data-constraint> 
+              <transport-guarantee>CONFIDENTIAL</transport-guarantee> 
+       </user-data-constraint> 
+	</security-constraint>	
+	
+	如果是需要局部使用https访问,当访问路径包括payment的时候，就会强制转换为https
+	<security-constraint> 
+       <web-resource-collection > 
+              <web-resource-name >SSL</web-resource-name> 
+              <url-pattern>/payment/*</url-pattern> 
+       </web-resource-collection>
+                             
+       <user-data-constraint> 
+              <transport-guarantee>CONFIDENTIAL</transport-guarantee> 
+       </user-data-constraint> 
+	</security-constraint>	
