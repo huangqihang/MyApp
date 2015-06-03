@@ -18,8 +18,10 @@ git reset --hard HEAD^ #回退到倒数第2个最新的版本
 
 git reset --hard 3628164 #回退到指定版本
 
+git reset --soft HEAD^ #回退到倒数第2个最新版本，同时将上1次提交的修改放到暂存区中
+
 ===============================================================
-丢弃工作区的修改
+丢弃工作区的修改，回到最近一次git add或git commit时的状态
 
 git checkout -- test.txt # 将暂存区的修改覆盖工作区(如果已add到暂存区)/用版本库的最新版本覆盖工作区
 
@@ -38,4 +40,65 @@ HEAD^^
 HEAD~100
 	
 git reflog #查看你的每一次命令，找到版本号
+
+===============================================================
+远程仓库与本地仓库
+
+【建立远程仓库：登录github，建立仓库】
+
+ssh-keygen -t rsa -C "j2ee_hqh@163"
+将上面生成的id_rsa.pub公钥粘贴到SSH KEY中
+
+
+【配置本地环境】
+git config --global user.name "huangqihang"
+git config --global user.email "j2ee_hqh@163.com"
+
+【初始化当前目录为1个Git仓库】
+cd f:/work/workspace/learn/MyApp
+git init
+
+git add .
+git commit -m 'init'
+
+
+【将本地仓库与远程仓库关联】
+git remote add origin git@github.com:huangqihang/MyApp.git
+
+#推送本地文件到仓库（第1次需要-u 参数 -u: 添加文件，并建立本地与远程仓库的关联，这样之后就不需要-u了。）
+git push -u origin master
+git push origin master
+
+
+===============================================================
+
+建立分支
+
+git branch dev
+git checkout dev
+--->简写
+git checkout -b dev
+
+
+git branch #查看本地分支
+
+git branch -r #查看远程分支
+
+
+git checkout master # 切换到master主分支
+
+git merge dev # 合并指定分支到当前分支(将dev的修改合并到当前master分支)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
