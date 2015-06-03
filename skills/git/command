@@ -1,0 +1,92 @@
+git config --global user.name "huangqihang"
+git config --global user.email "j2ee_hqh@163.com"
+
+cd f:/work/workspace/learn/MyApp
+
+git init
+
+git add .
+git commit -m 'init'
+
+git status
+
+#单个文件的操作
+git diff readme.txt 
+git diff HEAD -- readme.txt
+git add readme.txt
+
+git log -3 --pretty=oneline
+git log --pretty=oneline --abbrev-commit
+
+
+#直接回到上一个版本
+git reset --hard HEAD^
+
+#回退到上一个版本，并将最后1次提交的内容保留
+git reset --soft HEAD^ 
+
+#查看每一次操作对应的commit id
+git reflog
+
+#让这个文件回到最近一次git commit或git add时的状态
+git checkout -- readme.txt
+
+#把暂存区的修改撤销掉（unstage），重新放回工作区
+git reset HEAD readme.txt 
+
+
+#丢弃工作区的修改
+git checkout -- readme.txt
+
+#删除文件
+git rm readme.txt
+
+
+==================
+ssh-keygen -t rsa -C "j2ee_hqh@163"
+
+注册github账号
+将上面生成的id_rsa.pub公钥粘贴到SSH KEY中
+
+#将本地仓库与远程仓库关联
+git remote add origin git@github.com:huangqihang/MyApp.git
+
+#推送本地文件到仓库（第1次需要-u 参数 -u: 添加文件，并建立本地与远程仓库的关联，这样之后就不需要-u了。）
+git push -u origin master
+
+
+#克隆远程仓库到本地
+git clone git@github.com:huangqihang/MyApp.git
+
+
+
+======================================
+
+# 创建分支
+git checkout -b dev 
+ 
+#查看当前分支
+git branch 
+
+#切换到主分支
+git checkout master
+
+#合并指定分支到当前分支
+git merge dev
+
+#将dev分支合并到主分支
+git checkout master
+git checkout -b dev_merge #从主分支切出1个新的分支
+git merge dev # 将dev分支的内容合并到该分支上
+git commit -m'merge dev to dev_merge' #再从dev_merge合并到master
+
+==========================
+#查看远程库的信息
+ git remote -v
+ 
+ 
+
+
+
+
+
