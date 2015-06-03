@@ -9,4 +9,4 @@ Spring
 	
 Git
 	http://blog.jobbole.com/78999/ 【两分钟指南】
-	
+	http://git-scm.com/book/zh/ch3-5.html 【很棒】

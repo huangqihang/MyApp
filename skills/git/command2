@@ -113,8 +113,11 @@ git checkout -b feature-xxx
 【远程分支-多人协作分支】
 git remote -v #查看远程库的信息
 
+git checkout -b feature #新建本地分支feature
+git push origin feature:anotherBranch #将本地分支推送到远程，作为一个远程分支
 
 
+git merge origin/anotherBranch #把该远程分支的内容合并到当前分支
 
 
 
