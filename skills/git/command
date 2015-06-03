@@ -42,7 +42,10 @@ git log --pretty=oneline --abbrev-commit
 git reset --hard HEAD^
 
 #回退到上一个版本，并将最后1次提交的内容保留
-git reset --soft HEAD^ 
+git reset --soft HEAD^
+
+#回到commit id所指定的过去/未来
+git reset --hard 3628164 
 
 #查看每一次操作对应的commit id
 git reflog
