@@ -30,8 +30,10 @@ git checkout -- test.txt # 将暂存区的修改覆盖工作区(如果已add到�
 
 查看日志
 
-git log --pretty=oneline
-
+git log --pretty=oneline #简约风格
+git log --graph --pretty=oneline --abbrev-commit #显示分支的合并情况
+git log --graph #看分支合并图
+git reflog #查看你的每一次命令，找到版本号
 
 commit id 
 HEAD
@@ -39,7 +41,9 @@ HEAD^
 HEAD^^
 HEAD~100
 	
-git reflog #查看你的每一次命令，找到版本号
+
+
+
 
 ===============================================================
 远程仓库与本地仓库
@@ -89,8 +93,25 @@ git checkout master # 切换到master主分支
 
 git merge dev # 合并指定分支到当前分支(将dev的修改合并到当前master分支)
 
+git merge --no-ff -m "merge with no-ff" dev #--no-ff参数，表示禁用Fast forward，会在merge时生成一个新的commit
 
 
+【bug分支】
+git stash #把当前工作现场“储藏”起来，等以后恢复现场后继续工作
+git stash list
+git stash pop #恢复的同时把stash内容也删了
+
+git checkout master
+git checkout -b issue-101 #新建bug分支
+
+
+【新功能分支】
+git checkout master
+git checkout -b feature-xxx
+
+
+【远程分支-多人协作分支】
+git remote -v #查看远程库的信息
 
 
 
