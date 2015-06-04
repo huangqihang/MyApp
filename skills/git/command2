@@ -111,6 +111,8 @@ git checkout -b feature-xxx
 
 
 【远程分支-多人协作分支】
+============>>>>将本地分支推送到远程remote，第一次一定要加-u参数，否则之后的修改无法推送到远程分支上！
+
 git remote -v #查看远程库的信息
 
 #新建本地分支feature
