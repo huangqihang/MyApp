@@ -127,7 +127,7 @@ git push -u origin feature:myFeature #将远程分支上取名myFeature
 #删除github上的远程分支
 git push origin :feature 
 
-#当feature分支开发完成后，将代码合并到master分支的步骤
+#feature分支开发完成后，将代码合并到master分支的步骤
 git checkout master
 git checkout -b dev_for_merge #新建master分支，用来合并远程分支feature
 git merge origin/feature #把该远程分支的内容合并到当前分支
