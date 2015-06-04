@@ -113,12 +113,17 @@ git checkout -b feature-xxx
 【远程分支-多人协作分支】
 git remote -v #查看远程库的信息
 
-git checkout -b feature #新建本地分支feature
-git push origin :feature #删除github上的远程分支
+#新建本地分支feature
+git checkout -b feature 
+
+#推送到github上的远程分支名
+git push -u origin feature
 
 #推送到github上的远程分支名称可以另取名称
-git push origin feature:myFeature #将本地feature分支推送到远程，在远程分支上取名myFeature
+git push -u origin feature:myFeature #将远程分支上取名myFeature
 
+#删除github上的远程分支
+git push origin :feature 
 
 #当feature分支开发完成后，将代码合并到master分支的步骤
 git checkout master

@@ -40,7 +40,7 @@ public class AppConfig extends AppBase {
 			configs.add(newConfiguration("jdbc.properties", 3000));
 			
 		} catch (Exception e) {
-			logger.error("", e);
+			logger.error("加载配置异常", e);
 		}
 	}
 	
