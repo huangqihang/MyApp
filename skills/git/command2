@@ -114,10 +114,22 @@ git checkout -b feature-xxx
 git remote -v #查看远程库的信息
 
 git checkout -b feature #新建本地分支feature
-git push origin feature:anotherBranch #将本地分支推送到远程，作为一个远程分支
+git push origin :feature #删除github上的远程分支
+
+#推送到github上的远程分支名称可以另取名称
+git push origin feature:myFeature #将本地feature分支推送到远程，在远程分支上取名myFeature
 
 
-git merge origin/anotherBranch #把该远程分支的内容合并到当前分支
+#当feature分支开发完成后，将代码合并到master分支的步骤
+git checkout master
+git checkout -b dev_for_merge #新建master分支，用来合并远程分支feature
+git merge origin/feature #把该远程分支的内容合并到当前分支
+
+git push orgin master #当前分支推送到master
+
+或者
+git checkout master 
+git merge dev_for_merge
 
 
 
