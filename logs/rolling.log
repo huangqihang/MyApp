@@ -1,1 +1,13 @@
-1482 [main] INFO  dao.jdbc.demo.UserDao - auto commit: false
+1747 [main] ERROR xml.JaxbHelper - 
+javax.xml.bind.MarshalException: null
+	at com.sun.xml.internal.bind.v2.runtime.MarshallerImpl.write(MarshallerImpl.java:311) ~[na:1.7.0_40]
+	at com.sun.xml.internal.bind.v2.runtime.MarshallerImpl.marshal(MarshallerImpl.java:236) ~[na:1.7.0_40]
+	at javax.xml.bind.helpers.AbstractMarshallerImpl.marshal(AbstractMarshallerImpl.java:116) ~[na:1.7.0_40]
+	at xml.JaxbHelper.toXML(JaxbHelper.java:27) [test-classes/:na]
+	at xml.JaxbHelper.main(JaxbHelper.java:56) [test-classes/:na]
+Caused by: com.sun.istack.internal.SAXException2: unable to marshal type "app.model.Person" as an element because it is missing an @XmlRootElement annotation
+	at com.sun.xml.internal.bind.v2.runtime.XMLSerializer.reportError(XMLSerializer.java:237) ~[na:1.7.0_40]
+	at com.sun.xml.internal.bind.v2.runtime.ClassBeanInfoImpl.serializeRoot(ClassBeanInfoImpl.java:322) ~[na:1.7.0_40]
+	at com.sun.xml.internal.bind.v2.runtime.XMLSerializer.childAsRoot(XMLSerializer.java:483) ~[na:1.7.0_40]
+	at com.sun.xml.internal.bind.v2.runtime.MarshallerImpl.write(MarshallerImpl.java:308) ~[na:1.7.0_40]
+	... 4 common frames omitted

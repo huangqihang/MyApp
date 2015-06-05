@@ -1,7 +1,5 @@
 package app.common;
 
-import junit.framework.TestCase;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,11 +14,6 @@ import org.slf4j.LoggerFactory;
  * MyBaseDao extends Base
  */
 public abstract class AppBase {
-	
-	public static final String APP_ENCODING = "UTF-8";
-	
-	
-	
 	
 	protected Logger logger = LoggerFactory.getLogger(this.getClass());
 	

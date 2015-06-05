@@ -52,7 +52,7 @@ public class AppConfig extends AppBase {
 	private static PropertiesConfiguration newConfiguration(String fileName, long scanPeriod)
 			throws ConfigurationException {
 		PropertiesConfiguration appConfig = new PropertiesConfiguration();
-		appConfig.setEncoding(APP_ENCODING);
+		appConfig.setEncoding(Application.DEFAULT_ENCODING);
 		appConfig.load(fileName);
 		appConfig.setReloadingStrategy(newReloadingStrategy(scanPeriod));
 		return appConfig;
