@@ -8,13 +8,22 @@
     	<session-timeout>5</session-timeout>
     </session-config>
     
+    <!-- listener -->
+	<context-param>
+    	<param-name>contextConfigLocation</param-name>
+     	<param-value>classpath:spring/applicationContext.xml</param-value>
+	</context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    
     <!-- spring servlet -->
 	<servlet>
 	    <servlet-name>springDispatcherServlet</servlet-name>
 	    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 	    <init-param>
 	        <param-name>contextConfigLocation</param-name>
-	        <param-value>WEB-INF/applicationContext-servlet.xml</param-value>
+	        <param-value>classpath:spring/applicationContext-servlet.xml</param-value>
 	    </init-param>
 	    <load-on-startup>1</load-on-startup>
 	</servlet>
@@ -22,15 +31,6 @@
 	    <servlet-name>springDispatcherServlet</servlet-name>
 	    <url-pattern>/*</url-pattern>
 	</servlet-mapping>
-	
-	<!-- listener -->
-	<context-param>
-    	<param-name>contextConfigLocation</param-name>
-     	<param-value>WEB-INF/applicationContext.xml</param-value>
-	</context-param>
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
 	
 	
     <!-- filters -->
