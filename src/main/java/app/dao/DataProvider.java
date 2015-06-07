@@ -9,8 +9,8 @@ import java.util.Map;
 
 import org.apache.commons.beanutils.BeanUtils;
 
-import app.model.Address;
-import app.model.Person;
+import app.models.Address;
+import app.models.Person;
 
 public class DataProvider {
 	

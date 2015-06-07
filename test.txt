@@ -1,2 +1,104 @@
-22222222222222222222
-myfeature
+17. Web MVC framework
+17.1. Introduction to Spring Web MVC framework
+17.1.1. Features of Spring Web MVC
+17.1.2. Pluggability of other MVC implementations
+17.2. The DispatcherServlet
+17.2.1. Special Bean Types In the WebApplicationContext
+17.2.2. Default DispatcherServlet Configuration
+17.2.3. DispatcherServlet Processing Sequence
+17.3. Implementing Controllers
+17.3.1. Defining a controller with @Controller
+17.3.2. Mapping Requests With @RequestMapping
+@Controller's and AOP Proxying
+New Support Classes for @RequestMapping methods in Spring MVC 3.1
+URI Template Patterns
+URI Template Patterns with Regular Expressions
+Path Patterns
+Path Pattern Comparison
+Path Patterns with Placeholders
+Path Pattern Matching By Suffix
+Matrix Variables
+Consumable Media Types
+Producible Media Types
+Request Parameters and Header Values
+17.3.3. Defining @RequestMapping handler methods
+Supported method argument types
+Supported method return types
+Binding request parameters to method parameters with @RequestParam
+Mapping the request body with the @RequestBody annotation
+Mapping the response body with the @ResponseBody annotation
+Creating REST Controllers with the @RestController annotation
+Using HttpEntity
+Using @ModelAttribute on a method
+Using @ModelAttribute on a method argument
+Using @SessionAttributes to store model attributes in the HTTP session between requests
+Specifying redirect and flash attributes
+Working with "application/x-www-form-urlencoded" data
+Mapping cookie values with the @CookieValue annotation
+Mapping request header attributes with the @RequestHeader annotation
+Method Parameters And Type Conversion
+Customizing WebDataBinder initialization
+Support for the Last-Modified Response Header To Facilitate Content Caching
+Advising controllers with the @ControllerAdvice annotation
+Jackson Serialization View Support
+Jackson JSONP Support
+17.3.4. Asynchronous Request Processing
+Exception Handling for Async Requests
+Intercepting Async Requests
+Configuration for Async Request Processing
+17.3.5. Testing Controllers
+17.4. Handler mappings
+17.4.1. Intercepting requests with a HandlerInterceptor
+17.5. Resolving views
+17.5.1. Resolving views with the ViewResolver interface
+17.5.2. Chaining ViewResolvers
+17.5.3. Redirecting to views
+RedirectView
+The redirect: prefix
+The forward: prefix
+17.5.4. ContentNegotiatingViewResolver
+17.6. Using flash attributes
+17.7. Building URIs
+17.7.1. Building URIs to Controllers and methods
+17.7.2. Building URIs to Controllers and methods from views
+17.8. Using locales
+17.8.1. Obtaining Time Zone Information
+17.8.2. AcceptHeaderLocaleResolver
+17.8.3. CookieLocaleResolver
+17.8.4. SessionLocaleResolver
+17.8.5. LocaleChangeInterceptor
+17.9. Using themes
+17.9.1. Overview of themes
+17.9.2. Defining themes
+17.9.3. Theme resolvers
+17.10. Spring’s multipart (file upload) support
+17.10.1. Introduction
+17.10.2. Using a MultipartResolver with Commons FileUpload
+17.10.3. Using a MultipartResolver with Servlet 3.0
+17.10.4. Handling a file upload in a form
+17.10.5. Handling a file upload request from programmatic clients
+17.11. Handling exceptions
+17.11.1. HandlerExceptionResolver
+17.11.2. @ExceptionHandler
+17.11.3. Handling Standard Spring MVC Exceptions
+17.11.4. Annotating Business Exceptions With @ResponseStatus
+17.11.5. Customizing the Default Servlet Container Error Page
+17.12. Web Security
+17.13. Convention over configuration support
+17.13.1. The Controller ControllerClassNameHandlerMapping
+17.13.2. The Model ModelMap (ModelAndView)
+17.13.3. The View - RequestToViewNameTranslator
+17.14. ETag support
+17.15. Code-based Servlet container initialization
+17.16. Configuring Spring MVC
+17.16.1. Enabling the MVC Java Config or the MVC XML Namespace
+17.16.2. Customizing the Provided Configuration
+17.16.3. Interceptors
+17.16.4. Content Negotiation
+17.16.5. View Controllers
+17.16.6. View Resolvers
+17.16.7. Serving of Resources
+17.16.8. Falling Back On the "Default" Servlet To Serve Resources
+17.16.9. Path Matching
+17.16.10. Advanced Customizations with MVC Java Config
+17.16.11. Advanced Customizations with the MVC Namespace

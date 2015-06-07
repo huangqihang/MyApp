@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.TimeUnit;
 
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
@@ -16,28 +19,30 @@ import org.slf4j.LoggerFactory;
 
 import app.common.AppBase;
 
-public class AppConfig extends AppBase {
+public class AppConfig extends AppBase implements ServletContextListener {
 	
 	private static final Logger logger = LoggerFactory.getLogger(AppConfig.class);
 	
 	private static final Collection<Configuration> configs = new ConcurrentLinkedQueue<Configuration>();
 	
-	static {
+	public void contextInitialized(ServletContextEvent sce) {
 		initConfigs();
 	}
 
-	private static void initConfigs() {
+	public void contextDestroyed(ServletContextEvent sce) {
+		configs.clear();
+	}
+	
+	private void initConfigs() {
 		try {
 			// 加载系统属性
 			configs.add(new SystemConfiguration());
 			
 			// 加载主配置
-			configs.add(newConfiguration("app.properties", 3000));
+			configs.add(newConfiguration("application.properties", 3000));
 			
 			// 加载辅助配置
-			configs.add(newConfiguration("mail.properties", 3000));
-			configs.add(newConfiguration("other.properties", 3000));
-			configs.add(newConfiguration("jdbc.properties", 3000));
+			//configs.add(newConfiguration("jdbc.properties", 3000));
 			
 		} catch (Exception e) {
 			logger.error("加载配置异常", e);
@@ -52,7 +57,7 @@ public class AppConfig extends AppBase {
 	private static PropertiesConfiguration newConfiguration(String fileName, long scanPeriod)
 			throws ConfigurationException {
 		PropertiesConfiguration appConfig = new PropertiesConfiguration();
-		appConfig.setEncoding(APP_ENCODING);
+		appConfig.setEncoding(Application.DEFAULT_ENCODING);
 		appConfig.load(fileName);
 		appConfig.setReloadingStrategy(newReloadingStrategy(scanPeriod));
 		return appConfig;

@@ -24,8 +24,8 @@ import org.apache.commons.collections.comparators.ComparableComparator;
 import org.apache.commons.collections.comparators.ReverseComparator;
 
 import app.dao.DataProvider;
-import app.model.Address;
-import app.model.Person;
+import app.models.Address;
+import app.models.Person;
 
 public class MyBeanUtils {
 

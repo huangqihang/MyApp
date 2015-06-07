@@ -2,6 +2,8 @@ package com.hqh.pet.controllers;
 
 public class UserException extends RuntimeException {
 
+	private static final long serialVersionUID = -5470980317049629730L;
+
 	public UserException() {
 		super();
 	}

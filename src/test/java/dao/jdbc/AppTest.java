@@ -8,7 +8,7 @@ import junit.framework.TestCase;
 import org.junit.Test;
 
 import dao.jdbc.demo.UserDao;
-import app.model.User;
+import app.models.User;
 
 
 public class AppTest extends TestCase {

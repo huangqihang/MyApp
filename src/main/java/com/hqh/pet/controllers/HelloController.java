@@ -29,22 +29,6 @@ public class HelloController {
 	 * 4.REST
 	 */
 	
-	@PostConstruct
-	public void log() {
-		final Logger logger = LoggerFactory.getLogger(HelloController.class);
-		new Thread(new Runnable() {
-			
-			public void run() {
-				// TODO Auto-generated method stub
-				for(;;) {
-					try {
-						TimeUnit.SECONDS.sleep(1);
-					} catch (InterruptedException e) {}
-					logger.info(DateTime.now().toString("yyyy-MM-dd"));
-				}
-			}
-		}).start();
-	}
 	
 	public static final String VIEW = "hello";
 	

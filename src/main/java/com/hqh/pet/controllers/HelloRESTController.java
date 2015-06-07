@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
-import app.model.User;
+import app.models.User;
 
 @Controller
 @RequestMapping("/user")
@@ -86,9 +86,9 @@ public class HelloRESTController {
 	private void checkSession(HttpSession session) {
 		//验证session设置是否有效
 		System.out.println(session.getAttribute("loginUser")); //获取已登录用户的信息
-		Enumeration<Object> enums = session.getAttributeNames();
+		Enumeration<String> enums = session.getAttributeNames();
 		while(enums.hasMoreElements()) {
-			Object obj = enums.nextElement();
+			String obj = enums.nextElement();
 			System.out.println(session.getId()); //sessionId通过cookie存放到客户端
 		}
 	}

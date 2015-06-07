@@ -6,7 +6,7 @@ import java.util.Map;
 import org.junit.Test;
 
 import app.dao.DataProvider;
-import app.model.Person;
+import app.models.Person;
 
 import com.alibaba.fastjson.JSON;
 

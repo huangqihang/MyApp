@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="propertyPlaceholderConfigurer"   
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+        <property name="fileEncoding" value="UTF-8"/>
+	    <property name="locations">  
+	        <list>  
+	            <value>classpath:jdbc.properties</value>  
+	        </list>  
+	    </property>  
+	</bean>
+ 
+	<bean id="mainDataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
+	   <property name="driverClass" value="${${env_main}.jdbc.driverClassName}" />
+	   <property name="jdbcUrl" value="${${env_main}.jdbc.url}" />
+	   <property name="username" value="${${env_main}.jdbc.username}"/>
+	   <property name="password" value="${${env_main}.jdbc.password}"/>
+	   <property name="idleConnectionTestPeriodInMinutes" value="1"/>
+	   <property name="idleMaxAgeInMinutes" value="3"/>
+	   <property name="maxConnectionsPerPartition" value="30"/>
+	   <property name="minConnectionsPerPartition" value="10"/>
+	   <property name="partitionCount" value="3"/>
+	   <property name="acquireIncrement" value="5"/>
+	   <property name="statementsCacheSize" value="100"/>
+	</bean>
+	
+	<bean id="slaveDataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
+	   <property name="driverClass" value="${${env_slave}.jdbc.driverClassName}" />
+	   <property name="jdbcUrl" value="${${env_slave}.jdbc.url}" />
+	   <property name="username" value="${${env_slave}.jdbc.username}"/>
+	   <property name="password" value="${${env_slave}.jdbc.password}"/>
+	   <property name="idleConnectionTestPeriodInMinutes" value="1"/>
+	   <property name="idleMaxAgeInMinutes" value="3"/>
+	   <property name="maxConnectionsPerPartition" value="30"/>
+	   <property name="minConnectionsPerPartition" value="10"/>
+	   <property name="partitionCount" value="3"/>
+	   <property name="acquireIncrement" value="5"/>
+	   <property name="statementsCacheSize" value="100"/>
+	</bean>
+
+</beans>
